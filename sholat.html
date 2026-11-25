@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Navigasi Muslim.or.id dengan Image Logo</title>
+  <style>
+    /* Reset dasar */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    body {
+      background-color: #f4f6f9;
+      color: #333;
+      line-height: 1.6;
+    }
+
+    /* Header & Logo */
+    .top-header {
+      background-color: #ffffff;
+      padding: 15px 5%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid #e0e0e0;
+    }
+
+    /* Wrapper untuk Logo Image dan Teks */
+    .brand-wrapper {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+    }
+
+    /* Ukuran gambar logo bisa diatur di sini */
+    .brand-logo {
+      width: 48px;
+      height: 48px;
+      object-fit: contain;
+      flex-shrink: 0;
+    }
+
+    .brand-text {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .brand-title {
+      font-size: 24px;
+      font-weight: bold;
+      color: #0d5c3e;
+      line-height: 1.2;
+    }
+
+    .brand-tagline {
+      font-size: 12px;
+      color: #666;
+    }
+
+    .btn-donasi {
+      background-color: #0d5c3e;
+      color: #ffffff;
+      padding: 8px 18px;
+      border-radius: 5px;
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 600;
+      transition: background 0.3s;
+    }
+
+    .btn-donasi:hover {
+      background-color: #09422c;
+    }
+
+    /* Bar Navigasi Utama */
+    .navbar {
+      background-color: #0d5c3e;
+      padding: 0 5%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+
+    .nav-menu {
+      list-style: none;
+      display: flex;
+      flex-wrap: wrap;
+    }
+
+    .nav-item {
+      position: relative;
+    }
+
+    .nav-link {
+      display: block;
+      color: #ffffff;
+      text-decoration: none;
+      padding: 14px 16px;
+      font-size: 14px;
+      font-weight: 500;
+      transition: background 0.3s;
+    }
+
+    .nav-link:hover {
+      background-color: #8A94ED;
+    }
+
+    /* Dropdown Menu (Kategori) */
+    .dropdown-menu {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      background-color: #ffffff;
+      min-width: 210px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+      list-style: none;
+      border-top: 3px solid #d4af37;
+    }
+
+    .nav-item:hover .dropdown-menu {
+      display: block;
+    }
+
+    .dropdown-menu li a {
+      display: block;
+      padding: 10px 16px;
+      color: #333;
+      text-decoration: none;
+      font-size: 14px;
+      border-bottom: 1px solid #f0f0f0;
+      transition: background 0.2s, color 0.2s;
+    }
+
+    .dropdown-menu li a:hover {
+      background-color: #f4f6f9;
+      color: #0d5c3e;
+      padding-left: 20px;
+    }
+
+    /* Form Pencarian di Kanan Navigasi */
+    .search-box {
+      display: flex;
+      align-items: center;
+    }
+
+    .search-box input {
+      padding: 6px 12px;
+      border: none;
+      border-radius: 4px 0 0 4px;
+      font-size: 13px;
+      outline: none;
+    }
+
+    .search-box button {
+      padding: 6px 12px;
+      border: none;
+      background-color: #d4af37;
+      color: #fff;
+      font-weight: bold;
+      border-radius: 0 4px 4px 0;
+      cursor: pointer;
+      font-size: 13px;
+    }
+
+    .search-box button:hover {
+      background-color: #b8962e;
+    }
+
+    /* Kontainer Konten & Penjelasan Rata Kiri-Kanan */
+    .container {
+      max-width: 900px;
+      margin: 30px auto;
+      background-color: #ffffff;
+      padding: 30px 40px;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    }
+
+    .container h1 {
+      color: #0d5c3e;
+      margin-bottom: 15px;
+      font-size: 24px;
+      border-bottom: 2px solid #eee;
+      padding-bottom: 10px;
+    }
+
+    /* Pengaturan Rata Kiri-Kanan (Justify) */
+    .penjelasan-justify {
+      text-align: justify;
+      text-justify: inter-word;
+      font-size: 15px;
+      color: #444;
+      margin-bottom: 15px;
+    }
+
+    /* Responsif untuk Layar Kecil / HP */
+    @media (max-width: 768px) {
+      .navbar {
+        flex-direction: column;
+        align-items: stretch;
+        padding: 10px 5%;
+      }
+      .nav-menu {
+        flex-direction: column;
+      }
+      .dropdown-menu {
+        position: static;
+        box-shadow: none;
+        border-top: none;
+        background-color: #0a4931;
+      }
+      .dropdown-menu li a {
+        color: #e0e0e0;
+        padding-left: 30px;
+        border-bottom: 1px solid #0d5c3e;
+      }
+      .search-box {
+        margin-top: 10px;
+      }
+      .search-box input {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Bagian Atas (Logo Image & Tombol Donasi) -->
+  <header class="top-header">
+    <a href="#" class="brand-wrapper">
+      <!-- Menggunakan tag <img> agar logo mudah diganti/diedit file aslinya -->
+      <img src="logo.PNG" alt="Logo Muslim.or.id" class="brand-logo">
+
+      <!-- Teks Judul & Slogan -->
+      <div class="brand-text">
+	  <span class="brand-title">Rakaat.or.id</span>
+        <span class="brand-tagline">Memurnikan Aqidah Menebarkan Sunnah</span
+		<span class="brand-tagline">BY : Khansa Najlaa</span>
+      </div>
+    </a>
+
+    <a href="#donasi" class="btn-donasi">Donasi Dakwah</a>
+  </header>
+
+  <!-- Navigasi Utama -->
+  <nav class="navbar">
+    <ul class="nav-menu">
+	<a href="index.HTML" class="nav-link">Beranda</a></li>
+      <li class="nav-item"><a href="keutamaan.html" class="nav-link">Keutamaan</a></li>
+      <li class="nav-item"><a href="sifat.html" class="nav-link">Sifat Sholat Nabi</a></li>
+	  <li class="nav-item"><a href="tata.html" class="nav-link">Tata Cara Sholat</a></li>
+	  <li class="nav-item"><a href="sholat.html" class="nav-link">Sholat</a></li>
+	  <li class="nav-item"><a href="dzikir.html" class="nav-link">Dzikir Setelah Solat</a></li>
+      <li class="nav-item"><a href="doa.html" class="nav-link">12 Doa Iftitah</a></li>		  
+    </ul>
+      </li>
+    </ul>
+    <!-- Kotak Pencarian -->
+    <form class="search-box" action="#" method="GET">
+      <input type="text" placeholder="Cari artikel...">
+      <button type="submit">Cari</button>
+    </form>
+  </nav>
+
+  <!-- Area Konten dengan Penjelasan Rata Kiri-Kanan -->
+  <main class="container">
+    <h1>Sholatlah Sebelum Di Sholatkan</h1>
+   <center><img src="naj2.PNG" width="500" height="300"></center>
+    <p class="penjelasan-justify">
+  <br>
+  Waktu-Waktu Shalat
+
+Shalat itu ada lima waktu:
+<p>
+<br>
+Shalat Zhuhur, awal waktunya adalah saat waktu zawal (matahari tergelincir ke barat). 
+Akhir waktunya adalah saat tinggi bayangan bertambah sama dengan tinggi bendanya (dan tidak termasuk panjang bayangan saat zawal).
+<p>
+<br>
+Shalat ‘Ashar, awal waktunya adalah saat tinggi bayangan bertambah dari tinggi bendanya. Akhir waktunya -yang disebut waktu ikhtiyar (pilihan)- adalah saat tinggi bayangan bertambah dua kali tinggi benda. Akhir waktu jawaz (bolehnya) adalah saat matahari tenggelam.
+<p>
+<br>
+Shalat Maghrib, waktunya hanya satu, dimulai saat matahari tenggelam. Lamanya sekadar azan, berwudhu, menutup aurat, menegakkan shalat, dan shalat yang dikerjakan adalah lima rakaat.
+<p>
+<br>
+Shalat ‘Isyak, awal waktunya adalah jika awan merah di ufuk telah hilang. Akhir waktunya -yang disebut waktu ikhtiyar (pilihan)- adalah hingga 1/3 malam. Akhir waktu jawaz (bolehnya) adalah saat terbit fajar kedua (fajar shadiq).
+<p>
+<br>
+Shalat Shubuh, awal waktunya adalah saat terbit fajar kedua (fajar shodiq). Akhir waktunya -yang disebut waktu ikhtiyar (pilihan)- adalah sampai isfaar. Akhir waktu jawaz (bolehnya) adalah sampai matahari terbit.
+<p>
+<br> 
+Penjelasan:
+Shalat secara bahasa berarti ad-du’aa’ bi khair, doa kebaikan. Hal ini bisa ditemukan dalam ayat,
+<p>
+<br>
+خُذْ مِنْ أَمْوَٰلِهِمْ صَدَقَةً تُطَهِّرُهُمْ وَتُزَكِّيهِم بِهَا وَصَلِّ عَلَيْهِمْ ۖ إِنَّ صَلَوٰتَكَ سَكَنٌ لَّهُمْ ۗ وَٱللَّهُ سَمِيعٌ عَلِيمٌ
+<p>
+<br>
+“Ambillah zakat dari sebagian harta mereka, dengan zakat itu kamu membersihkan dan mensucikan mereka dan berdoalah kebaikan untuk mereka. Sesungguhnya doa kamu itu (menjadi) ketenteraman jiwa bagi mereka. Dan Allah Maha Mendengar lagi Maha Mengetahui.” (QS. At-Taubah: 103). Maksud dari “sholli ‘alaihim” adalah doakan kebaikan kepada mereka.
+<p>
+<br>
+Sebagaimana dikatakan oleh Imam Ar-Rafi’i, shalat secara syari berarti:
+<p>
+<br>
+أَقْوَالٌ وَأَفْعَالٌ مُفْتَتَحَةٌ بِالتَّكْبِيْرِ مُخْتَتَمَةٌ بِالتَّسْلِيْمِ بِشَرَائِطَ مَخْصُوْصَةٍ
+<p>
+<br>
+“Perkataan dan perbuatan yang dibuka dengan takbir dan ditutup dengan salam dengan memenuhi syarat tertentu.” (Fath Al-Qarib Al-Mujiib fi Syarh Alfaazh At-Taqriib, hlm. 163)
+<p>
+<br>
+Aqwaal (perkataan) dalam shalat: Allahu Akbar, membaca Al-Qur’an, tasbih, bacaan tasyahud, salam.
+Af’aal (perbuatan) dalam shalat: rukuk, berdiri, sujud, duduk antara dua sujud, tasyahud.
+Syarat-syarat shalat nantinya akan dibahas.
+<p>
+<br> 
+
+Shalat itu ada dua macam:
+Shalat wajib yang lima waktu.
+Shalat sunnah, berupa shalat sunnah rawatib dan selainnya.
+Hukum shalat lima waktu adalah wajib bagi: (1) muslim dan muslimah, (2) yang terpenuhi syaratnya.
+<p>
+<br>
+Allah Ta’ala berfirman,
+<p>
+<br>
+وَأَقِيمُوا۟ ٱلصَّلَوٰةَ وَءَاتُوا۟ ٱلزَّكَوٰةَ وَٱرْكَعُوا۟ مَعَ ٱلرَّٰكِعِينَ
+<p>
+<br>
+“Dan dirikanlah shalat, tunaikanlah zakat dan rukuklah beserta orang-orang yang rukuk.” (QS. Al-Baqarah: 43)
+<p>
+<br>
+Dari Abu  ‘Abdurrahman ‘Abdullah bin ‘Umar bin Al-Khattab radhiyallahu ‘anhuma, ia mengatakan bahwa ia mendengar Rasulullah shallallahu ‘alaihi wa sallam bersabda,
+<p>
+<br>
+بُنِيَ اْلإِسْلاَمُ عَلَى خَمْسٍ : شَهَادَةِ أَنْ لاَ إِلَهَ إِلاَّ اللهُ وَأَنَّ مُحَمَّداً رَسُوْلُ اللهِ وَإِقَامِ الصَّلاَةِ وَإِيْتَاءِ الزَّكَاةِ وَحَجِّ الْبَيْتِ وَصَوْمِ رَمَضَانَ
+<p>
+<br>
+“Islam dibangun di atas lima perkara: bersaksi bahwa tidak ada yang berhak disembah melainkan Allah dan Muhammad adalah utusan Allah; menunaikan shalat; menunaikan zakat; menunaikan haji (ke Baitullah); dan berpuasa Ramadhan.” (HR. Bukhari, no. 8; Muslim, no. 16)
+<p>
+<br>
+ <p>
+<br>
+Catatan:
+1. Shalat itu diwajibkan pada malam Israk dan Mikraj, 27 Rajab pada 1,5 tahun sebelum hijrah.
+<p>
+<br>
+Hikmah disyariatkannya shalat: (a) ta’abbudi karena shalat itu adalah perintah Allah kepada hamba yang diperintahkan untuk dikerjakan pada waktunya, (b) amalan yang pertama kali akan dihisab pada hari kiamat, (c) shalat adalah tiang agama, (d) shalat itu adalah syariat yang terakhir diangkat oleh Allah di bumi, (e) shalat itu dilaksakan sebagai suatu ketaatan dan bentuk syukur atas nikmat Allah, (f) shalat itu dapat menghapus dosa.
+ 
+    </p>
+
+    
+    </p>
+  </main>
+
+</body>
+</html>
